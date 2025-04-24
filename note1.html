@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For You</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(135deg, #ffe0ec, #e0eaff);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    #envelope {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-bottom: 20px;
+    }
+
+    #envelope:hover {
+      transform: scale(1.1);
+    }
+
+    #messageCard {
+      display: none;
+      background: #fffdeb;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+      max-width: 90%;
+    }
+
+    .fade-in {
+      animation: fadeIn 1.5s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="https://cdn-icons-png.flaticon.com/512/2099/2099071.png" alt="Envelope" id="envelope" width="100">
+  <p>Tap the envelope , I have something for you.... My heart says💖</p>
+
+  <div id="messageCard">
+    <p>Hey Aadithya 💖,</p>
+    <p>Aadithyaaa 🌟 you're such a beauty queen fr 👑 always so pretty and elegant! I'll never forget your snaps—they're just so calm and peaceful, like a breath of fresh air 💙 keep glowingg!</p>
+    <p>With lots of love,<br>~ R 🤍</p>
+  </div>
+
+  <script>
+    document.getElementById('envelope').addEventListener('click', function() {
+      const messageCard = document.getElementById('messageCard');
+      messageCard.style.display = 'block';
+      messageCard.classList.add('fade-in');
+    });
+  </script>
+
+</body>
+</html>
