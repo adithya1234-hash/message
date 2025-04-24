@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <title>For You</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      background: linear-gradient(135deg, #ffe0ec, #e0eaff);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-    }
+  body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: linear-gradient(135deg, #ffe0ec, #e0eaff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* 👈 This line ensures you can scroll when content overflows */
+}
+
 
     #envelope {
       cursor: pointer;
