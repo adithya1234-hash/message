@@ -1,23 +1,57 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For You</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       font-family: 'Playfair Display', serif;
-      background: linear-gradient(135deg, #ffe0ec, #e0eaff);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       min-height: 100vh;
       padding: 16px;
-      box-sizing: border-box;
+      position: relative;
       overflow-y: auto;
+      z-index: 1;
+    }
+
+    /* Slideshow background */
+    .slideshow-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .slideshow-container img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1.5s ease-in-out;
+    }
+
+    .slideshow-container img.active {
+      opacity: 0.3; /* Low opacity for background */
+    }
+
+    #content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 800px;
     }
 
     #envelope {
@@ -35,24 +69,24 @@
       font-size: 18px;
       margin: 0 0 20px;
       padding: 0 10px;
+      color: #000;
+      font-weight: bold;
     }
 
-  #messageCard {
-  display: none;
-  background: #fffdeb;
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
-  max-width: 100%;
-  width: 100%;
-  margin-top: 16px;
-  font-size: 16px;
-  line-height: 1.6;
-  text-align: left;
-  box-sizing: border-box;
-  /* Remove fixed height and scroll inside */
-}
-
+    #messageCard {
+      display: none;
+      background: #fffdeb;
+      padding: 16px;
+      border-radius: 12px;
+      box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      margin-top: 16px;
+      font-size: 16px;
+      line-height: 1.6;
+      text-align: left;
+      box-sizing: border-box;
+      color: #000;
+    }
 
     .fade-in {
       animation: fadeIn 1.2s forwards;
@@ -66,6 +100,20 @@
 </head>
 <body>
 
+  <!-- Background Slideshow -->
+  <div class="slideshow-container">
+    <img src="https://raw.githubusercontent.com/adithya1234-hash/message/main/WhatsApp%20Image%202025-04-25%20at%2008.52.59_4bc156a7.jpg" class="slide active">
+    <img src="https://raw.githubusercontent.com/adithya1234-hash/message/main/WhatsApp%20Image%202025-04-25%20at%2008.52.59_3d0005d4.jpg" class="slide">
+    <img src="https://raw.githubusercontent.com/adithya1234-hash/message/main/WhatsApp%20Image%202025-04-25%20at%2008.52.59_36d53b20.jpg" class="slide">
+    <img src="https://raw.githubusercontent.com/adithya1234-hash/message/main/WhatsApp%20Image%202025-04-25%20at%2008.52.58_293fe5ca.jpg" class="slide">
+    <img src="https://raw.githubusercontent.com/adithya1234-hash/message/main/WhatsApp%20Image%202025-04-25%20at%2008.52.58_19da3a5a.jpg" class="slide">
+    <img src="https://raw.githubusercontent.com/adithya1234-hash/message/main/WhatsApp%20Image%202025-04-25%20at%2008.52.58_11e6e617.jpg" class="slide">
+    <img src="https://raw.githubusercontent.com/adithya1234-hash/message/main/WhatsApp%20Image%202025-04-25%20at%2008.52.57_9b5b88bc.jpg" class="slide">
+    <img src="https://raw.githubusercontent.com/adithya1234-hash/message/main/WhatsApp%20Image%202025-04-25%20at%2008.52.57_2ecd388c.jpg" class="slide">
+  </div>
+
+  <!-- Main Content -->
+  <div id="content">
   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm-Z8vfGELnDkxHbvgbZ9SvpEbnrkmLUhhEQ&s" alt="Envelope" id="envelope">
   
   <p class="intro-text">Tap the envelope, I have something for you.... My heart says 💖</p>
@@ -84,10 +132,22 @@ Take care my skyyyyyy ettaaaaaaa😘......my younger chekkan😌
 
 </p>
     <p>With lots of love,<br>~ Adiiiiiiiiiiiiii 🤍</p>
+    </div>
   </div>
 
- <script>
-    document.getElementById('envelope').addEventListener('click', function() {
+  <script>
+    // Slideshow script
+    let slides = document.querySelectorAll('.slide');
+    let index = 0;
+
+    setInterval(() => {
+      slides[index].classList.remove('active');
+      index = (index + 1) % slides.length;
+      slides[index].classList.add('active');
+    }, 4000); // Change image every 4 seconds
+
+    // Envelope click script
+    document.getElementById('envelope').addEventListener('click', function () {
       const messageCard = document.getElementById('messageCard');
       messageCard.style.display = 'block';
       messageCard.classList.add('fade-in');
